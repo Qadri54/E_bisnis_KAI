@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('booking_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ticket_id');
+            $table->integer('banyak_tiket');
+            $table->enum('status', ['waiting', 'success', 'time out'])->default('waiting');
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
