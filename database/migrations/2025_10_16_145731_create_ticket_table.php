@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('jadwal_id');
             $table->unsignedBigInteger('kereta_id');
             $table->unsignedBigInteger('destinasi_id');
+            $table->integer('stok_tiket');
             $table->timestamps();
 
             $table->foreign('jadwal_id')->references('jadwal_id')->on('jadwal_kereta')->onDelete('cascade');

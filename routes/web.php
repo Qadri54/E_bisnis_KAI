@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoutingPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,22 +16,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['verified'])->name('dashboard');
-
-    Route::get('/home', function () {
-        return view('KeretaApi.home');
-    })->name('KeretaApi.home');
-
-    Route::get('/buyticket', function () {
-        return view('KeretaApi.buyticket');
-    })->name('KeretaApi.buyticket');
-
-    Route::get('/reservasi', function () {
-        return view('KeretaApi.reservasi');
-    })->name('KeretaApi.reservasi');
-
+    Route::get('/home', [RoutingPageController::class, 'index'])->name('home_page');
+    Route::get('/list-ticket/{stasiun_awal}/{stasiun_akhir}/{tanggal_berangkat}/{banyak_penumpang}', [RoutingPageController::class, 'show_list_ticket'])->name('list_ticket');
+    Route::get('/detail-ticket/{id_tiket}', [RoutingPageController::class, 'show_detail_ticket'])->name('detail_ticket');
+    Route::get('/tutor-pembayaran', [RoutingPageController::class, 'show_tutor_pembayaran'])->name('tutor_pembayaran');
 });
 
 require __DIR__ . '/auth.php';
