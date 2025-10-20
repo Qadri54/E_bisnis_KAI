@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Ticket extends Model {
     protected $fillable = [
         'ticket_id',
@@ -14,19 +15,19 @@ class Ticket extends Model {
         'stok_tiket',
     ];
 
-    public function booking() {
+    public function booking(): BelongsToMany {
         return $this->belongsToMany(User::class,'booking','ticket_id','user_id');
     }
 
-    public function jadwalKereta() {
+    public function jadwalKereta(): BelongsTo {
         return $this->belongsTo(JadwalKereta::class);
     }
 
-    public function kereta() {
+    public function kereta(): BelongsTo {
         return $this->belongsTo(Kereta::class);
     }
 
-    public function destinasi() {
+    public function destinasi(): BelongsTo {
         return $this->belongsTo(Destinasi::class);
     }
 }
