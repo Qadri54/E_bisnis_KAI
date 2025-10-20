@@ -15,7 +15,7 @@ class Ticket extends Model {
     ];
 
     public function booking() {
-        return $this->hasMany(Booking::class);
+        return $this->belongsToMany(User::class,'booking','ticket_id','user_id');
     }
 
     public function jadwalKereta() {

@@ -24,7 +24,7 @@ class User extends Authenticatable
     ];
 
     public function booking(){
-        return $this->hasMany(Booking::class);
+        return $this->belongsToMany(Ticket::class,'booking','user_id','ticket_id');
     }
 
 
