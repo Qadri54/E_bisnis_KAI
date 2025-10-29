@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('jadwal_kereta', function (Blueprint $table) {
             $table->id('jadwal_id');
-            $table->date('jadwal_keberangkatan');
-            $table->date('jadwal_sampai');
+            $table->dateTime('jadwal_keberangkatan');
+            $table->dateTime('jadwal_sampai');
             $table->timestamps();
         });
     }

@@ -3,11 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JadwalKereta extends Model
 {
-    public function ticket(): HasMany {
-        return $this->hasMany(Ticket::class);
+    protected $table = 'jadwal_kereta';
+    protected $primaryKey = 'jadwal_id';
+    
+    protected $fillable = [
+        'jadwal_keberangkatan',
+        'jadwal_sampai'
+    ];
+
+    protected $casts = [
+        'jadwal_keberangkatan' => 'datetime',
+        'jadwal_sampai' => 'datetime'
+    ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'jadwal_id', 'jadwal_id');
     }
 }
