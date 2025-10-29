@@ -3,11 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kereta extends Model
 {
-    public function ticket(): HasMany {
-        return $this->hasMany(Ticket::class);
+    protected $table = 'kereta';
+    protected $primaryKey = 'kereta_id';
+    
+    protected $fillable = [
+        'nama_kereta'
+    ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'kereta_id', 'kereta_id');
     }
 }

@@ -3,11 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Destinasi extends Model
 {
-    public function ticket(): HasMany {
-        return $this->hasMany(Ticket::class);
+    protected $table = 'destinasi';
+    protected $primaryKey = 'destinasi_id';
+    
+    protected $fillable = [
+        'destinasi_asal',
+        'destinasi_tujuan'
+    ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'destinasi_id', 'destinasi_id');
     }
 }
