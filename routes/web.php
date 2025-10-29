@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RoutingPageController::class, 'index'])->name('home');
 
-Route::get('/search-tickets', [RoutingPageController::class, 'show_list_ticket'])->name('list_ticket');
+Route::get('/list-ticket', [RoutingPageController::class, 'show_list_ticket'])->name('list_ticket');
+
 
 Route::middleware('auth')->group(function () {
 
