@@ -13,7 +13,8 @@ class Ticket extends Model
         'jadwal_id',
         'kereta_id',
         'destinasi_id',
-        'stok_tiket'
+        'stok_tiket',
+        'harga_tiket'
     ];
 
     public function jadwalKereta()
