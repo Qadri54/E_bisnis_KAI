@@ -16,7 +16,7 @@ class RoutingPageController extends Controller
             ->distinct()
             ->orderBy('destinasi_asal')
             ->pluck('destinasi_asal');
-        
+
         $destinations = Destinasi::select('destinasi_tujuan')
             ->distinct()
             ->orderBy('destinasi_tujuan')

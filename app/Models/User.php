@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that are mass assignable.
      *
@@ -24,8 +24,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function booking(): BelongsToMany{
-        return $this->belongsToMany(Ticket::class,'booking','user_id','ticket_id');
+    public function booking(): BelongsToMany {
+        return $this->belongsToMany(Ticket::class, 'booking', 'user_id', 'ticket_id');
     }
 
 
@@ -44,8 +44,7 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
+    protected function casts(): array {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',

@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [RoutingPageController::class, 'index'])->name('home');
 
 Route::get('/list-ticket', [RoutingPageController::class, 'show_list_ticket'])->name('list_ticket');
-Route::get('/detail-ticket/{id_tiket}', [RoutingPageController::class, 'show_detail_ticket'])->name('detail_ticket');
-
+Route::get('/detail-Ticket/{id_tiket}', [RoutingPageController::class, 'show_detail_ticket'])->name('detail_ticket');
 
 Route::middleware('auth')->group(function () {
 
@@ -18,6 +17,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
     Route::get('/tutor-pembayaran', [RoutingPageController::class, 'show_tutor_pembayaran'])->name('tutor_pembayaran');
+
 });
 
 require __DIR__ . '/auth.php';
