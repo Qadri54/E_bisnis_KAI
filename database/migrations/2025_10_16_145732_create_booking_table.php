@@ -4,18 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('booking', function (Blueprint $table) {
             $table->id('booking_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ticket_id');
             $table->integer('banyak_tiket');
+            $table->integer('total_harga');
+            $table->string('kode_booking')->unique();
+            $table->date('tanggal_booking');
             $table->enum('status', ['waiting', 'success', 'time out'])->default('waiting');
             $table->timestamps();
 
@@ -27,8 +28,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('booking');
     }
 };
